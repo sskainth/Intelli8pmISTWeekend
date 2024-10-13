@@ -1,7 +1,7 @@
 @amazon
 Feature: Amazon Home Page validation
 
-  @amazon01 @regressiontest
+  @amazon01
   Scenario: Search functionality
     When user enter the product name "iphone"
     And user clicks the search icon
