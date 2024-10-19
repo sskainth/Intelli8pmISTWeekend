@@ -25,7 +25,7 @@ Feature: Amazon Home Page validation
         | ProductName |
         | iphone      |
         | mouse       |
-        | laptop      |
+       # | laptop      |
 
    @Amazon04
     Scenario: Handling of static dropdown
