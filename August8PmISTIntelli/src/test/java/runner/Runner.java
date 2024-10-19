@@ -10,7 +10,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"src/test/resources/testdesgin"},
         glue = {"stepdefination"},
-        tags = "@amazon03"
+        tags = "@wiki01",
+        plugin = {"pretty"}
 )
 
 public class Runner {
