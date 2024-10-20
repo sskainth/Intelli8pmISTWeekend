@@ -12,17 +12,33 @@ public class ListExample {
         l.add(56);
         l.add(100);
         l.add(1,78);
-
-        System.out.println(l);
         l.add(78);
         l.add(90);
         l.add(90);
         l.add(90);
-        System.out.println(l);
-        System.out.println(l.get(2));
+
+
+        for(int d:l){
+            System.out.println(d);
+        }
 
         List <String> l2 = new ArrayList<String>();
         l2.add("abc");
+        l2.add("a");
+        l2.add("y");
+
+        System.out.println(l2);
+
+        for(int i =0 ; i < l2.size() ;i++){
+            System.out.println(l2.get(i));;
+        }
+
+        for(String p:l2){
+            System.out.println(p);
+        }
+
+
+
 
     }
 }

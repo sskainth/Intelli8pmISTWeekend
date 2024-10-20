@@ -53,7 +53,6 @@ public class AmazonSteps {
     public void userClickBabyWishListOptionFromAccountMenu() {
             homePage.hoverAccountAndList();
             homePage.clickBabyWishList();
-
     }
 
     @Then("validate the navigation")
@@ -63,7 +62,6 @@ public class AmazonSteps {
 
     @When("user enter the product name {string}")
     public void userEnterTheProductName(String productName) throws IOException {
-
 
         homePage.enterProductName("login",1,0);
 
