@@ -55,6 +55,7 @@ public class BrowserBase {
         }
 
         driver.get(properties.getProperty("url"));
+        driver.manage().window().maximize();
         return driver;
     }
 }

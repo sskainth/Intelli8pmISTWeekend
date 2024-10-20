@@ -6,14 +6,20 @@ public class ArrayExample {
 
         int [] k = {10,20,30,40}; //0,1,2,3
 
+        for(int j:k){
+            System.out.println(j);
+        }
+
         System.out.println(k.length);
         System.out.println(k[2]);
 
         String [] p = {"abc", "xyz"}; //0,1
 
-        System.out.println(p.length);
+        //hasNext
 
-        System.out.println(p[3]);
+        for(String h:p){
+            System.out.println(h);
+        }
 
 
     }
