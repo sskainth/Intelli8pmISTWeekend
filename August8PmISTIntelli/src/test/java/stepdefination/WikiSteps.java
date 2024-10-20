@@ -34,5 +34,6 @@ public class WikiSteps {
         Assert.assertEquals("14.61%",wikiPage.getShareHoldingValue().get(0));
         Assert.assertEquals("Total",wikiPage.getShareHolderValue().get(5));
 
+
     }
 }

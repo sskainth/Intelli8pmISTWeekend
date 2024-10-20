@@ -62,10 +62,10 @@ public class AmazonSteps {
     }
 
     @When("user enter the product name {string}")
-    public void userEnterTheProductName(String productName) {
+    public void userEnterTheProductName(String productName) throws IOException {
 
 
-        homePage.enterProductName(productName);
+        homePage.enterProductName("login",1,0);
 
     }
 
