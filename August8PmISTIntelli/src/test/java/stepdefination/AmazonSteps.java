@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import pageobjects.AmazonHomePage;
+import pageobjects.CartPage;
 import pageobjects.SearchResultPage;
 import utlility.BrowserBase;
 
@@ -21,6 +22,7 @@ public class AmazonSteps {
     WebElement categoryElement ;
     AmazonHomePage homePage;
     SearchResultPage resultPage;
+    CartPage cartPage;
 
     public AmazonSteps() throws IOException {
 
@@ -28,6 +30,7 @@ public class AmazonSteps {
         this.driver = b.browserInvocation();
         homePage = new AmazonHomePage(this.driver); //check for the constructor
         resultPage = new SearchResultPage(this.driver);
+        cartPage = new CartPage(this.driver);
     }
 
     @Then("user validate the title of the page")
@@ -89,5 +92,43 @@ public class AmazonSteps {
 
     }
 
+    @When("User mouse hover on Prime menu option")
+    public void mouseHoverPrime(){
+        homePage.hoverPrime();
 
+    }
+
+    @And("Click on join prime button")
+    public void clickOnJoinPrimeButton() {
+        homePage.clickPrimeJoin();
+
+    }
+
+    @Then("user validate the title of the prime page")
+    public void userValidateTheTitleOfThePrimePage() {
+
+    }
+
+    /*@When("user enter the product name 'Keyboard'")
+    public void enterKeyboard(String productName){
+        homePage.enterProductName(productName);
+    }*/
+
+
+    @And("Select the keyboard from list")
+    public void selectKeyboardFromList() {
+        homePage.selectKeyboard();
+        System.out.println("added");
+
+    }
+
+    @And("click on cart")
+    public void clickOnCart() {
+        homePage.clickOncart();
+    }
+
+    @Then("user validate the number of items")
+    public void userValidateNumberOfItems() {
+        cartPage.numberOfIteams();
+    }
 }

@@ -35,6 +35,26 @@ Feature: Amazon Home Page validation
       Then validate the dropdown values
 
 
+  @amazonP
+  Scenario: open prime membership page
+    When User mouse hover on Prime menu option
+    And Click on join prime button
+    Then user validate the title of the prime page
+
+
+    @newproduct
+    Scenario: Search functionality
+      When user enter the product name "Keyboard"
+      And user clicks the search icon
+      And Select the keyboard from list
+      And click on cart
+      Then user validate the number of items
+
+
+
+
+
+
 
 
 

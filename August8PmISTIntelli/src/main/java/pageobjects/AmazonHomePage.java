@@ -55,4 +55,23 @@ public class AmazonHomePage {
         driver.findElement(By.partialLinkText("by Wishli")).click();
     }
 
+    public void hoverPrime(){
+        WebElement primeElement = driver.findElement(By.xpath("//span[text()='Prime']"));
+        Actions a = new Actions(driver);
+        a.clickAndHold(primeElement).build().perform();
+
+    }
+
+    public void clickPrimeJoin(){
+        driver.findElement(By.xpath("//img[@id='multiasins-img-link']")).click();
+       // driver.findElement(By.id("primeat-nav-img-link")).click();
+    }
+
+    public void selectKeyboard(){
+        driver.findElement(By.xpath("//button[@id='a-autoid-1-announce']")).click();
+    }
+
+    public void clickOncart(){
+        driver.findElement(By.xpath("//span[@id='nav-cart-count']")).click();
+    }
 }
