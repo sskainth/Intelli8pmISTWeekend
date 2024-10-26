@@ -9,6 +9,10 @@ public class ArrayExample {
         for(int j:k){
             System.out.println(j);
         }
+        
+        for(int i=0 ; i < k.length; i++){
+            System.out.println(k[i]);
+        }
 
         System.out.println(k.length);
         System.out.println(k[2]);
