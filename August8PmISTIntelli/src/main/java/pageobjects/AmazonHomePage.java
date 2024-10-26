@@ -1,6 +1,7 @@
 package pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -8,6 +9,8 @@ import org.openqa.selenium.support.ui.Select;
 import utlility.ExcelHandler;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
 
 public class AmazonHomePage {
 
@@ -59,7 +62,15 @@ public class AmazonHomePage {
 
     public void clickBabyWishList(){
       //  driver.findElement(By.xpath("//span[text()='Baby Wishlist']")).click();
-        driver.findElement(By.partialLinkText("by Wishli")).click();
+        driver.findElement(By.partialLinkText("by Wishli")).sendKeys(Keys.chord(Keys.CONTROL,Keys.ENTER));
+
+       Set<String> winProperties = driver.getWindowHandles();
+        Iterator <String> i = winProperties.iterator();
+       String parentWin = i.next(); // 0
+       String childWinProperty = i.next(); //1
+        driver.switchTo().window(childWinProperty);
+        System.out.println(winProperties);
+
     }
 
 }

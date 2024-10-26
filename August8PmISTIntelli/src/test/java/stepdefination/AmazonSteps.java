@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,34 +13,29 @@ import org.openqa.selenium.support.ui.Select;
 import pageobjects.AmazonHomePage;
 import pageobjects.SearchResultPage;
 import utlility.BrowserBase;
+import utlility.PageObjectManager;
 
 import java.io.IOException;
 
 public class AmazonSteps {
 
-    WebDriver driver ; // null knowledge // Global variable
-    WebElement categoryElement ;
-    AmazonHomePage homePage;
-    SearchResultPage resultPage;
-
+    PageObjectManager pageObjectManager;
     public AmazonSteps() throws IOException {
 
         BrowserBase b = new BrowserBase();
-        this.driver = b.browserInvocation();
-        homePage = new AmazonHomePage(this.driver); //check for the constructor
-        resultPage = new SearchResultPage(this.driver);
+         pageObjectManager = new PageObjectManager(b.browserInvocation());
     }
 
     @Then("user validate the title of the page")
     public void userValidateTheTitleOfThePage() {
-      String title =  resultPage.getTitleOfSearchResultPage();
+      String title =  pageObjectManager.getSearchResultPage().getTitleOfSearchResultPage();
         System.out.println(title);
     }
     
     @And("user clicks the search icon")
     public void clickSearchIcon(){
+    pageObjectManager.getAmazonHomePage().clickSearchIcon();
 
-        homePage.clickSearchIcon();
 
     }
 
@@ -51,19 +47,20 @@ public class AmazonSteps {
 
     @When("user click baby wish list option from Account menu")
     public void userClickBabyWishListOptionFromAccountMenu() {
-            homePage.hoverAccountAndList();
-            homePage.clickBabyWishList();
+        pageObjectManager.getAmazonHomePage().hoverAccountAndList();
+        pageObjectManager.getAmazonHomePage().clickBabyWishList();
     }
 
     @Then("validate the navigation")
     public void validateTheNavigation() {
-        
+
+        Assert.assertEquals("Baby Wishlist",pageObjectManager.getBabyWishListPage().getBabyText());
     }
 
     @When("user enter the product name {string}")
     public void userEnterTheProductName(String productName) throws IOException {
 
-        homePage.enterProductName("login",1,0);
+        pageObjectManager.getAmazonHomePage().enterProductName("login",1,0);
 
     }
 
@@ -74,12 +71,12 @@ public class AmazonSteps {
 
     @When("user select the dropdown value from category dropdown")
     public void handleDropdown() {
-        homePage.handleDropdown();
+        pageObjectManager.getAmazonHomePage().handleDropdown();
     }
 
     @And("user extracts the dropdown values")
     public void userExtractsTheDropdownValues() {
-        homePage.extractDropdownValue();
+        pageObjectManager.getAmazonHomePage().extractDropdownValue();
     }
 
     @Then("validate the dropdown values")
