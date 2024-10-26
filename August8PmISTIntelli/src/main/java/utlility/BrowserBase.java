@@ -11,17 +11,27 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 public class BrowserBase {
 
     WebDriver driver ;
-    public WebDriver browserInvocation() throws IOException {
+    public WebDriver browserInvocation()  {
 
         File f = new File("src/main/resources/configuration/frameworkconfig.properties");
-        FileInputStream fis = new FileInputStream(f);
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(f);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         Properties properties = new Properties();
-        properties.load(fis);
+        try {
+            properties.load(fis);
+        } catch (IOException e) {
+                throw new RuntimeException(e);
+        }
         properties.getProperty("browser"); // browser value
 
 //        if(properties.getProperty("browser").equalsIgnoreCase("chrome")){
@@ -53,9 +63,9 @@ public class BrowserBase {
             default:
                 throw  new InvalidArgumentException("please check the browser value");
         }
-
         driver.get(properties.getProperty("url"));
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         return driver;
     }
 }

@@ -1,10 +1,7 @@
 package utlility;
 
 import org.openqa.selenium.WebDriver;
-import pageobjects.AmazonHomePage;
-import pageobjects.BabyWishListPage;
-import pageobjects.SearchResultPage;
-import pageobjects.WikiPage;
+import pageobjects.*;
 
 public class PageObjectManager {
 
@@ -31,5 +28,10 @@ public class PageObjectManager {
     public SearchResultPage getSearchResultPage(){
         SearchResultPage resultPage = new SearchResultPage(driver);
         return resultPage;
+    }
+
+    public LearnMorePage getLearnMorePage(){
+        LearnMorePage learnMorePage = new LearnMorePage(driver);
+        return learnMorePage;
     }
 }
