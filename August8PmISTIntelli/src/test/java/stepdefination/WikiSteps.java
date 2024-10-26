@@ -30,6 +30,9 @@ public class WikiSteps {
     @Then("user validate the mapping of share holder and share holding value")
     public void userValidateTheMappingOfShareHolderAndShareHoldingValue() {
 
+
+        Assert.assertEquals("100.00%",wikiPage.getShareHolderAndShareholdingValue().get("Total"));
+
         Assert.assertEquals("Promoters group",wikiPage.getShareHolderValue().get(0));
         Assert.assertEquals("14.61%",wikiPage.getShareHoldingValue().get(0));
         Assert.assertEquals("Total",wikiPage.getShareHolderValue().get(5));
