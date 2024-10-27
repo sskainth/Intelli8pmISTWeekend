@@ -18,21 +18,21 @@ public class BrowserBase {
 
     WebDriver driver ;
     public WebDriver browserInvocation()  {
-
-        File f = new File("src/main/resources/configuration/frameworkconfig.properties");
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream(f);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        Properties properties = new Properties();
-        try {
-            properties.load(fis);
-        } catch (IOException e) {
+        if(driver == null) {
+            File f = new File("src/main/resources/configuration/frameworkconfig.properties");
+            FileInputStream fis = null;
+            try {
+                fis = new FileInputStream(f);
+            } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
-        }
-        properties.getProperty("browser"); // browser value
+            }
+            Properties properties = new Properties();
+            try {
+                properties.load(fis);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            properties.getProperty("browser"); // browser value
 
 //        if(properties.getProperty("browser").equalsIgnoreCase("chrome")){
 //             driver = new ChromeDriver();
@@ -50,22 +50,26 @@ public class BrowserBase {
 //            throw new InvalidArgumentException("please check the browser value");
 //        }
 
-        switch (properties.getProperty("browser").toLowerCase()){
-            case "edge":
-                driver = new EdgeDriver();
-                break;
-            case "chrome":
-                driver = new ChromeDriver();
-                break;
-            case "safari":
-                driver = new SafariDriver();
-                break;
-            default:
-                throw  new InvalidArgumentException("please check the browser value");
+            switch (properties.getProperty("browser").toLowerCase()) {
+                case "edge":
+                    driver = new EdgeDriver();
+                    break;
+                case "chrome":
+                    driver = new ChromeDriver();
+                    break;
+                case "safari":
+                    driver = new SafariDriver();
+                    break;
+                default:
+                    throw new InvalidArgumentException("please check the browser value");
+            }
+            driver.get(properties.getProperty("url"));
+
+            driver.manage().window().maximize();
+
+            driver.navigate().refresh();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         }
-        driver.get(properties.getProperty("url"));
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         return driver;
     }
 }

@@ -5,7 +5,7 @@ import pageobjects.*;
 
 public class PageObjectManager {
 
-    WebDriver driver;
+   private WebDriver driver;
     public PageObjectManager(WebDriver webDriver) {
         this.driver = webDriver;
     }
@@ -33,5 +33,10 @@ public class PageObjectManager {
     public LearnMorePage getLearnMorePage(){
         LearnMorePage learnMorePage = new LearnMorePage(driver);
         return learnMorePage;
+    }
+
+    public SpiceHomePage getSpiceHomePage(){
+        SpiceHomePage spiceHomePage = new SpiceHomePage(driver);
+        return spiceHomePage;
     }
 }
