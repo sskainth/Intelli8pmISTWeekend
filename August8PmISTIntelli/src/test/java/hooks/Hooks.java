@@ -1,8 +1,8 @@
 package hooks;
 
-import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.Before;
+import io.cucumber.java.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import utlility.TestContext;
 
 public class Hooks {
@@ -23,9 +23,15 @@ public class Hooks {
         context.base.browserInvocation().quit();
     }
 
+    @BeforeStep()
+
     @AfterStep()
-    public void takeScreenshot(){
-        System.out.println("screenshot");
+    public void takeScreenshot(Scenario sc){
+
+        TakesScreenshot ts = (TakesScreenshot)context.base.browserInvocation();
+       byte[] bytedate= ts.getScreenshotAs(OutputType.BYTES);
+       sc.attach(bytedate,"image/png",sc.getName());
+
     }
 
 }

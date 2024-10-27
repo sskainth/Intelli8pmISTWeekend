@@ -17,13 +17,13 @@ Feature: Amazon Home Page validation
     #after
 
     #before
-  @amazon02
+  @amazon02 @regression
   Scenario: baby wishlist page navigation
    # Given user navigate to Amazon HomePage
     When user click baby wish list option from Account menu
     Then validate the navigation
 
-    @amazon03
+    @amazon03 @smoke
     Scenario Outline: Search functionality with multiple test data
     #  Given user navigate to Amazon HomePage
       When user enter the product name "<ProductName>"
