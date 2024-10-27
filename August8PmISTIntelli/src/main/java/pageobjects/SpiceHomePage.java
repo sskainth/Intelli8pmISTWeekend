@@ -8,7 +8,7 @@ public class SpiceHomePage {
     public SpiceHomePage(WebDriver driver) {
         this.driver = driver;
     }
-    
+
     public void clickFromDropdown(){
         driver.findElement(By.id("ControlGroupSearchView_AvailabilitySearchInputSearchVieworiginStation1_CTXT")).click();
     }

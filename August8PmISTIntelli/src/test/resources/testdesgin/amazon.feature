@@ -1,13 +1,22 @@
 @amazon
 Feature: Amazon Home Page validation
 
+  #before
   @amazon01
   Scenario: Search functionality
+    #beforestep
     When user enter the product name "iphone"
+    #afterstep
+    #beforestep
     And user clicks the search icon
+    #afterstep
+    #beforestep
     Then user validate the title of the page
+    #beforestep
     And user validate the search results
+    #after
 
+    #before
   @amazon02
   Scenario: baby wishlist page navigation
    # Given user navigate to Amazon HomePage
