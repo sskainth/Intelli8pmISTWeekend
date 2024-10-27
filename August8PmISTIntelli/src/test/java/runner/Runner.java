@@ -11,7 +11,10 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/testdesgin"},
         glue = {"stepdefination","hooks"},
         tags = "@amazon02",
-        plugin = {"pretty"}
+        plugin = {"pretty"
+                ,"html:target/test-results/report.html",
+                "json:target/test-results/report.json",
+                "junit:target/test-results/report.xml"}
 )
 
 public class Runner {
