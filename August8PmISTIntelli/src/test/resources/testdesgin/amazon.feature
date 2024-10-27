@@ -23,7 +23,7 @@ Feature: Amazon Home Page validation
     When user click baby wish list option from Account menu
     Then validate the navigation
 
-    @amazon03 @smoke
+    @amazon03 @smoke @regression
     Scenario Outline: Search functionality with multiple test data
     #  Given user navigate to Amazon HomePage
       When user enter the product name "<ProductName>"

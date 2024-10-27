@@ -19,5 +19,7 @@ public class SpiceHomePage {
 
     public void enterToValue(int a){
         driver.findElement(By.xpath("//div[@data-cel-widget='search_result_"+a+"']")).click();
+        driver.findElement(By.xpath("//span[normalize-space(text())='Start my free trial']")).click();
+        driver.findElement(By.cssSelector(".label.usernamelabel")).click();
     }
 }
